@@ -1,0 +1,38 @@
+* {
+    margin    : 0;
+    padding   : 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial;
+}
+
+header {
+    margin         : 20px auto;
+    height         : 80px;
+    display        : flex;
+    justify-content: space-around;
+    align-items    : center;
+}
+
+header ul {
+    list-style: none;
+    display   : flex;
+
+}
+
+header li {
+    display        : block;
+    margin-right   : 20px;
+    padding        : 10px;
+    font-size      : 24px;
+    color          : black;
+}
+
+header li:hover {
+    color           : white;
+    background-color: #FF6E41;
+    border-radius   : 5px;
+    text-decoration : none;
+}

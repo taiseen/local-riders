@@ -1,0 +1,48 @@
+main {
+    display        : flex;
+    flex-wrap      : wrap;
+    justify-content: space-evenly;
+    width          : 70%;
+    margin         : auto;
+
+}
+
+.user_input_area {
+    display       : flex;
+    flex-direction: column;
+    background    : #EFEFEF;
+    align-self    : flex-start;
+    height        : 300px;
+    padding       : 15px 20px;
+    border-radius : 5px;
+    margin-bottom : 20px;
+    width         : 320px;
+}
+
+label {
+    font-size  : 22px;
+    font-weight: 700;
+}
+
+input[type=text] {
+    padding      : 7px;
+    margin-bottom: 20px;
+    font-size    : 22px;
+    border-radius: px;
+}
+
+.map_area img {
+    width: 95%;
+}
+
+button {
+    background-color: #FF6E41;
+    height          : 50px;
+    font-size       : 22px;
+    color           : white;
+    border-radius   : 5px;
+}
+
+button:hover {
+    cursor: pointer;
+}
