@@ -10,6 +10,32 @@ export const initLoginFrameWork = () => {
     }
 }
 
+
+
+// For Normal Google Login ##########################################
+export const logInWithEmailAndPassword = (email, password) => {
+    return firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(res => {
+            const userInfo = res.user;
+            userInfo.userSuccess = true;
+            userInfo.userError = '';
+            console.log('success full - sign in');
+            return userInfo;
+        })
+        .catch(error => {
+            const userInfo = {};
+            userInfo.userSuccess = false;
+            userInfo.userError = error.message;
+            console.log(error);
+            return userInfo;
+        });
+}
+
+
+
+
+
+
 // For Google ##############################################
 export const googleLogin = () => {
     const provider = new firebase.auth.GoogleAuthProvider();

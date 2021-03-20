@@ -46,6 +46,10 @@ const App = () => {
                         <Destination/>
                     </Route>
 
+                    <Route path="/createAccount">
+                        <CreateAccount/>
+                    </Route>
+
                     <Route path="/login">
                         <LoginPage/>
                     </Route>

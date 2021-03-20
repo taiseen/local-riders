@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { UserContext } from '../../../App';
 
 import '../CreateAccount/CreateAccount.css'
@@ -6,34 +6,74 @@ import '../CreateAccount/CreateAccount.css'
 import facebook from '../../../img/facebook.png'
 import google from '../../../img/google.png'
 import github from '../../../img/github.png'
-import { faceBookLogin, gitHubLogin, googleLogin, initLoginFrameWork } from '../FireBaseLogin/FireBaseLogin';
+import { faceBookLogin, gitHubLogin, googleLogin, initLoginFrameWork , logInWithEmailAndPassword } from '../FireBaseLogin/FireBaseLogin';
 
 
 const LoginPage = () => {
 
     const [loginUser, setLoginUser] = useContext(UserContext);
 
+    const [user, setUser] = useState({
+        isLogin: false,
+        name: '',
+        email: '',
+        password: '',
+        photo: '',
+        userSuccess: false,
+        userError: ''
+    });
+
     initLoginFrameWork();
 
-    const handleInput = (event) => {
+    // user input area conditions
+    //##################################
+    const handleUserInput = (event) => {
 
+        let isFormValid = true;
 
         if (event.target.name === "email") {
-            console.log(event.target.value);
+            isFormValid = /\S+@\S+.\S+/.test(event.target.value);
         }
 
         if (event.target.name === "password") {
-            console.log(event.target.value);
+            const passwordLength = event.target.value.length > 6;
+            const passwordNumber = /\d{1}/.test(event.target.value);
+            isFormValid = passwordLength && passwordNumber;
         }
 
+        if (isFormValid) {
+            let updateUserInfo = {... user};
+            updateUserInfo[event.target.name] = event.target.value;
+
+            // Locally store 
+            setUser(updateUserInfo)
+
+            // Globally store | Context API
+            //setLoginUser(updateUserInfo)
+        } 
 
     }
 
-    const loginFunction = (event) => {
+
+    // user submit button press conditions
+    // these data send to Google Firebase For Login
+    //####################################
+    const onSubmitFunction = (event) => {
         event.preventDefault();
 
+        if (user.email && user.password) {
+            logInWithEmailAndPassword(user.email , user.password )
+            .then(res => {
+                setUser(res);
+                setLoginUser(res);
+            })
+        }
+
+        console.log("Local ==> ",user);
+        console.log("Context API ==> ",loginUser);
         console.log('loginFunction OK');
     }
+
 
     const handleFacebookLogin = () => {
         console.log('fb ==== Login Page ');
@@ -75,9 +115,9 @@ const LoginPage = () => {
                 <h3>Login</h3>
                 <p>{loginUser?.displayName}</p>
 
-                <form onSubmit={loginFunction}>
-                    <input type="text" name="email" placeholder="Email" onBlur={handleInput} />
-                    <input type="password" name="password" placeholder="Password" onBlur={handleInput} />
+                <form onSubmit={onSubmitFunction}>
+                    <input type="text" name="email" placeholder="Email" onBlur={handleUserInput} required />
+                    <input type="password" name="password" placeholder="Password" onBlur={handleUserInput} required />
 
                     <div>
                         <label htmlFor="">
