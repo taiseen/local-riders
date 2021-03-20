@@ -6,7 +6,7 @@ import '../CreateAccount/CreateAccount.css'
 import facebook from '../../../img/facebook.png'
 import google from '../../../img/google.png'
 import github from '../../../img/github.png'
-import { faceBookLogin, gitHubLogin, googleLogin, initLoginFrameWork, logInWithEmailAndPassword } from '../FireBaseLogin/FireBaseLoginManager';
+import { faceBookLogin, gitHubLogin, googleLogin, initLoginFrameWork, logInWithEmailAndPassword, logOut } from '../FireBaseLogin/FireBaseLoginManager';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 
 
@@ -66,10 +66,21 @@ const LoginPage = () => {
     //####################################
     const onSubmitFunction = (event) => {
         event.preventDefault();
-
         if (user.email && user.password) {
             logInWithEmailAndPassword(user.email, user.password)
                 .then(res => {
+
+                    const { displayName } = res;
+
+                    const newUser = { ...user };
+
+                    newUser.isLogin = true;
+                    newUser.name = displayName;
+
+                    setUser(newUser);
+                    console.log("===================================", newUser);
+
+
                     setLoginUser(res);
                     // private routing purpose......
                     history.replace(from)
@@ -94,13 +105,24 @@ const LoginPage = () => {
     }
 
     const handleGoogleLogin = () => {
-        console.log('google ==== Login Page');
         googleLogin()
             .then(res => {
                 // pass to context api for global access
+                const { displayName } = res;
+
+                const newUser = { ...user };
+
+                newUser.isLogin = true;
+                newUser.name = displayName;
+
+                setUser(newUser);
+                console.log("===================================", newUser);
+
+                // Context API
                 setLoginUser(res);
+
+                //For Private Route
                 history.replace(from);
-                console.log("Google => ", loginUser);
             })
     }
 
@@ -115,6 +137,20 @@ const LoginPage = () => {
             })
     }
 
+    console.log(user.isLogin);
+
+    const userLogOut = () => {
+        console.log('log out.......');
+        logOut()
+            .then(res => {
+                const logOutUser = {
+                    name : '',
+                    email : '',
+                }
+
+                setLoginUser(logOutUser)
+            })
+    }
 
     return (
         <div>
@@ -130,19 +166,28 @@ const LoginPage = () => {
                                         Remember Me
                         </label>
                         <a href="">Forget Password?</a>
+                        
                     </div>
-                    <input type="submit" value="Login" />
+                    
+                    {/* {
+                        user.isLogin
+                            ? 
+                            :  <input type="submit" value="LogOut" onClick={userLogOut} />
+                    } */}
+
+                        <input type="submit" value="Login" />
                 </form>
                 <p>
                     Don't have an account?
                     <Link to={'/createAccount'}> Create an account</Link>
                 </p>
+
             </div>
 
 
-            <div className="auth_area" onClick={handleFacebookLogin}>
+            <div className="auth_area">
 
-                <div className="box">
+                <div className="box" onClick={handleFacebookLogin}>
                     <img src={facebook} alt="" />
                     <p>Continue with facebook</p>
                 </div>

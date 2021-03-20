@@ -5,6 +5,8 @@ import './Header.css'
 
 const Header = () => {
     const [loginUser, setLoginUser] = useContext(UserContext);
+    
+    console.log('Header File ############################# ',loginUser);
 
     return (
         <header>
@@ -24,9 +26,7 @@ const Header = () => {
                         <Link to={'/createAccount'}> New Account</Link>
                     </li>
                     <li>
-                        <Link to={'/login'}>Login</Link>
-                        
-                        {/* {loginUser ? loginUser?.displayName : <p>Login</p> } */}
+                        <Link to={'/login'}>{loginUser ? loginUser?.displayName || 'Login': 'Login' }</Link>
                     </li>
                 </ul>
             </nav>

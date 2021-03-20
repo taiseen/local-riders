@@ -114,3 +114,15 @@ export const gitHubLogin = () => {
             console.log(errorMessage);
         });
 }
+
+
+export const logOut = () => {
+    return firebase.auth().signOut()
+    .then(result => {
+        const user = result.user;
+        return user ;
+        
+    }).catch(error => {
+        console.log(error);
+    });
+}
