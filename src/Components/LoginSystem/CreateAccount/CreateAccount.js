@@ -36,13 +36,14 @@ const CreateAccount = () => {
         console.log('loginPage.........................');
     }
     const facebookLogin = () => {
-        console.log('fb.........................');
+        console.log('fb === Create Account Page');
     }
     const googleLogin = () => {
-        console.log('google.........................');
+        console.log('google === Create Account Page');
+        
     }
     const gitHubLogin = () => {
-        console.log('git.........................');
+        console.log('git === Create Account Page');
     }
 
     // onBlur={handleBlur}

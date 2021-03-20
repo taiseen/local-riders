@@ -11,20 +11,11 @@ import Header from './Components/Header/Header';
 import PageNotFound from './Components/PageNotFound/PageNotFound';
 import Destination from './Components/Destination/Destination';
 
-import firebase from "firebase/app";
-import "firebase/auth";
-import firebaseConfig from './Components/FireBase/FireBaseConfig';
+
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import CreateAccount from './Components/LoginSystem/CreateAccount/CreateAccount';
 import LoginPage from './Components/LoginSystem/LoginPage/LoginPage';
 
-
-
-if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-} else {
-    firebase.app(); // if already initialized, use that one
-}
 
 
 // 11-March-2021
