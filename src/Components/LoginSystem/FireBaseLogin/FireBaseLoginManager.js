@@ -10,9 +10,27 @@ export const initLoginFrameWork = () => {
     }
 }
 
+// Create New User ##########################################
+export const createUserWithEmailAndPassword = (email, password) => {
+    return firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then(res => {
+            const newUserInfo = res.user;
+            newUserInfo.userSuccess = true;
+            newUserInfo.userError = '';
+            console.log('success full - create');
+            return newUserInfo;
+        })
+        .catch(error => {
+            console.log(error);
+            const newUserInfo = {};
+            newUserInfo.userSuccess = false;
+            newUserInfo.userError = error.message;
+            return newUserInfo;
+        });
+}
 
 
-// For Normal Google Login ##########################################
+// For Normal Mail Login ##########################################
 export const logInWithEmailAndPassword = (email, password) => {
     return firebase.auth().signInWithEmailAndPassword(email, password)
         .then(res => {
@@ -30,10 +48,6 @@ export const logInWithEmailAndPassword = (email, password) => {
             return userInfo;
         });
 }
-
-
-
-
 
 
 // For Google ##############################################

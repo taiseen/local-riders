@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../App';
 import './Header.css'
 
 const Header = () => {
+    const [loginUser, setLoginUser] = useContext(UserContext);
+
     return (
         <header>
             <h1>Local Riders</h1>
@@ -21,7 +24,7 @@ const Header = () => {
                         <Link to={'/createAccount'}> New Account</Link>
                     </li>
                     <li>
-                        <Link to={'/login'}>Login</Link>
+                        <Link to={'/login'}>{!loginUser ? loginUser?.displayName : <p>Login</p> }</Link>
                     </li>
                 </ul>
             </nav>

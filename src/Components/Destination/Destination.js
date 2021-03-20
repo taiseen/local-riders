@@ -2,9 +2,12 @@ import React from 'react';
 import './Destination.css'
 import mapStaticImage from '../../img/map.png'
 import { useParams } from 'react-router';
+import vehicleData from '../DB/vehicleData.json'
+
 const Destination = () => {
 
-    const { productKey } = useParams();
+    const { vehicleType } = useParams();
+    const vehicle = vehicleData.find(v => v.id == vehicleType);
 
     return (
 

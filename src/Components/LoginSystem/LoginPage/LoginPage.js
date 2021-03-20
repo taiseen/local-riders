@@ -6,7 +6,8 @@ import '../CreateAccount/CreateAccount.css'
 import facebook from '../../../img/facebook.png'
 import google from '../../../img/google.png'
 import github from '../../../img/github.png'
-import { faceBookLogin, gitHubLogin, googleLogin, initLoginFrameWork , logInWithEmailAndPassword } from '../FireBaseLogin/FireBaseLogin';
+import { faceBookLogin, gitHubLogin, googleLogin, initLoginFrameWork , logInWithEmailAndPassword } from '../FireBaseLogin/FireBaseLoginManager';
+import { Link } from 'react-router-dom';
 
 
 const LoginPage = () => {
@@ -130,7 +131,7 @@ const LoginPage = () => {
                 </form>
                 <p>
                     Don't have an account?
-                    <a href="#"> Create an account</a>
+                    <Link to={'/createAccount'}> Create an account</Link>
                 </p>
             </div>
 

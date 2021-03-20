@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import './CreateAccount.css'
 import facebook from '../../../img/facebook.png'
@@ -6,13 +6,66 @@ import google from '../../../img/google.png'
 import github from '../../../img/github.png'
 
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
+import { UserContext } from '../../../App';
+import { createUserWithEmailAndPassword, faceBookLogin, gitHubLogin, googleLogin, initLoginFrameWork } from '../FireBaseLogin/FireBaseLoginManager';
 
 const CreateAccount = () => {
 
+    const [loginUser, setLoginUser] = useContext(UserContext);
+
     const { register, handleSubmit, watch, errors } = useForm();
 
-    const onSubmit = userData => {
-        console.log(userData);
+    initLoginFrameWork();
+
+    // user info send to Google Firebase...
+    const onSubmit = (userData) => {
+        //event.preventDefault();
+
+        if( userData.password === userData.rePassword){
+            console.log(userData);
+            //userData.name
+            createUserWithEmailAndPassword( userData.email, userData.password)
+            .then(res => {
+
+                setLoginUser(res);
+            })
+
+        }else{
+            console.log(`password don't match`);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         console.log('newAccountCreate.........................');
     }
 
@@ -32,21 +85,45 @@ const CreateAccount = () => {
         }
 
     }
-    const loginPage = () => {
-        console.log('loginPage.........................');
-    }
-    const facebookLogin = () => {
+
+
+
+    // FaceBook =========================================
+    const handleFacebookLogin = () => {
         console.log('fb === Create Account Page');
-    }
-    const googleLogin = () => {
-        console.log('google === Create Account Page');
-        
-    }
-    const gitHubLogin = () => {
-        console.log('git === Create Account Page');
+        faceBookLogin()
+        .then(res => {
+            // pass to context api for global access
+            setLoginUser(res);
+            // history.replace(from);
+            console.log("FB => ", loginUser);
+        })
     }
 
-    // onBlur={handleBlur}
+    // Google ===========================================
+    const handleGoogleLogin = () => {
+        console.log('google === Create Account Page');
+        googleLogin()
+        .then(res => {
+            // pass to context api for global access
+            setLoginUser(res);
+            // history.replace(from);
+            console.log("Google => ", loginUser);
+        })
+        
+    }
+
+    // GitHub ===========================================
+    const handleGitHubLogin = () => {
+        console.log('git === Create Account Page');
+        gitHubLogin()
+        .then(res => {
+            // pass to context api for global access
+            setLoginUser(res);
+            // history.replace(from);
+            console.log("Git => ", loginUser);
+        })
+    }
     
     return (
 
@@ -72,21 +149,21 @@ const CreateAccount = () => {
                 </form>
                 <p>
                     Already have an account?
-                <a href="#" onClick={loginPage} >Login</a>
+                <Link to={'/login'}>Login </Link>
                 </p>
             </div>
 
 
             <div className="auth_area">
-                <div className="box" onClick={facebookLogin}>
+                <div className="box" onClick={handleFacebookLogin}>
                     <img src={facebook} alt="" />
                     <p>Continue with facebook</p>
                 </div>
-                <div className="box" onClick={googleLogin}>
+                <div className="box" onClick={handleGoogleLogin}>
                     <img src={google} alt="" />
                     <p>Continue with Google</p>
                 </div>
-                <div className="box" onClick={gitHubLogin}>
+                <div className="box" onClick={handleGitHubLogin}>
                     <img src={github} alt="" />
                     <p>Continue with GitHub</p>
                 </div>
