@@ -55,7 +55,7 @@ const LoginPage = () => {
             setUser(updateUserInfo)
 
             // Globally store | Context API
-            //setLoginUser(updateUserInfo)
+            setLoginUser(updateUserInfo)
         }
 
     }
@@ -70,7 +70,6 @@ const LoginPage = () => {
         if (user.email && user.password) {
             logInWithEmailAndPassword(user.email, user.password)
                 .then(res => {
-                    setUser(res);
                     setLoginUser(res);
                     // private routing purpose......
                     history.replace(from)
@@ -89,7 +88,7 @@ const LoginPage = () => {
             .then(res => {
                 // pass to context api for global access
                 setLoginUser(res);
-                // history.replace(from);
+                history.replace(from);
                 console.log("FB => ", loginUser);
             })
     }
@@ -100,7 +99,7 @@ const LoginPage = () => {
             .then(res => {
                 // pass to context api for global access
                 setLoginUser(res);
-                // history.replace(from);
+                history.replace(from);
                 console.log("Google => ", loginUser);
             })
     }
@@ -111,7 +110,7 @@ const LoginPage = () => {
             .then(res => {
                 // pass to context api for global access
                 setLoginUser(res);
-                // history.replace(from);
+                history.replace(from);
                 console.log("Git => ", loginUser);
             })
     }
@@ -121,8 +120,6 @@ const LoginPage = () => {
         <div>
             <div className="login_area">
                 <h3>Login</h3>
-                <p>{loginUser?.displayName}</p>
-
                 <form onSubmit={onSubmitFunction}>
                     <input type="text" name="email" placeholder="Email" onBlur={handleUserInput} required />
                     <input type="password" name="password" placeholder="Password" onBlur={handleUserInput} required />

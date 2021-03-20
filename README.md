@@ -1,16 +1,18 @@
-# React App <|> [Live Link](https://www.fb.com) 
+# React App <|> [Live Link](https://local-riders-bd.web.app) 
 
 ## Topic of Focus:
-- API Call Here
-- Dual Fetch for Logo
-- Show Data with Logo
-- Conditional Formatting Image
-- Favicon icon add 
+- OAuth Login System
+- User Manually SignUp & SignIn
 
 ## Technologies :
 Project is created with:
 * HTML5 
-* CSS + BootStrap
+* CSS3
 * React 
-* Netlify
+* FireBase
 * GitHub
+
+## Missing :
+* Map
+* Responsive
+* 

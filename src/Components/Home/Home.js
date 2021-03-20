@@ -5,10 +5,7 @@ import Vehicle from '../Vehicle/Vehicle';
 
 const Home = () => {
 
-
     const [vehicles, setVehicles] = useState([])
-
-    console.log('data ==> ', vehicles);
 
     useEffect(() => {
         setVehicles(vehicleData);

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 
 import './CreateAccount.css'
 import facebook from '../../../img/facebook.png'
@@ -6,29 +6,51 @@ import google from '../../../img/google.png'
 import github from '../../../img/github.png'
 
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { UserContext } from '../../../App';
 import { createUserWithEmailAndPassword, faceBookLogin, gitHubLogin, googleLogin, initLoginFrameWork } from '../FireBaseLogin/FireBaseLoginManager';
 
 const CreateAccount = () => {
 
-    const [loginUser, setLoginUser] = useContext(UserContext);
+
+    // private routing purpose......
+    const history = useHistory();
+    const location = useLocation();
+    const { from } = location.state || { from: { pathname: "/" } };
 
     const { register, handleSubmit, watch, errors } = useForm();
+
+    const [loginUser, setLoginUser] = useContext(UserContext);
+
+    const [user, setUser] = useState({
+        isLogin: false,
+        name: '',
+        email: '',
+        password: '',
+        photo: '',
+        userSuccess: false,
+        userError: ''
+    });
 
     initLoginFrameWork();
 
     // user info send to Google Firebase...
     const onSubmit = (userData) => {
-
-
-        if (userData.password === userData.rePassword) {
-            console.log(userData);
+        const { name, email, password, rePassword } = userData
+        if (password === rePassword) {
+            const newUserInfo = { ...user };
+            newUserInfo.name = name;
+            newUserInfo.email = email;
+            newUserInfo.password = password;
+            newUserInfo.userSuccess = true;
+            
+            console.log(newUserInfo);
 
             createUserWithEmailAndPassword(userData.email, userData.password)
                 .then(res => {
-
+                    //useState(newUserInfo);
                     setLoginUser(res);
+                    history.replace(from);
                 })
 
         } else {
@@ -38,22 +60,6 @@ const CreateAccount = () => {
         console.log('newAccountCreate.........................');
     }
 
-    const handleBlur = (event) => {
-
-        if (event.target.name === 'name') {
-            console.log(event.target.value);
-        }
-        if (event.target.name === 'email') {
-            console.log(event.target.value);
-        }
-        if (event.target.name === 'password') {
-            console.log(event.target.value);
-        }
-        if (event.target.name === 'rePassword') {
-            console.log(event.target.value);
-        }
-
-    }
 
     // FaceBook =========================================
     const handleFacebookLogin = () => {
@@ -62,7 +68,7 @@ const CreateAccount = () => {
             .then(res => {
                 // pass to context api for global access
                 setLoginUser(res);
-                // history.replace(from);
+                history.replace(from);
                 console.log("FB => ", loginUser);
             })
     }
@@ -74,7 +80,7 @@ const CreateAccount = () => {
             .then(res => {
                 // pass to context api for global access
                 setLoginUser(res);
-                // history.replace(from);
+                history.replace(from);
                 console.log("Google => ", loginUser);
             })
 
@@ -87,7 +93,7 @@ const CreateAccount = () => {
             .then(res => {
                 // pass to context api for global access
                 setLoginUser(res);
-                // history.replace(from);
+                history.replace(from);
                 console.log("Git => ", loginUser);
             })
     }
@@ -101,7 +107,6 @@ const CreateAccount = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
 
                     <input type="text" name="name" placeholder="Name" ref={register({ required: true })} />
-
                     {errors.name && <span className="error e1">Name is required</span>}
 
                     <input type="text" name="email" placeholder="Username of Email" ref={register({ required: true, pattern: /\S+@\S+.\S+/ })} />
@@ -120,7 +125,7 @@ const CreateAccount = () => {
                 <Link to={'/login'}>Login </Link>
                 </p>
                 {/* {
-                    !loginUser.displayName
+                    user.userSuccess
                         ? <p className="success">Account Create Successfully</p>
                         : <p className="error">All ready have account with this email</p>
                 } */}

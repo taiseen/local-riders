@@ -18,13 +18,15 @@ const Header = () => {
                         <Link to={'/destination/1'}>Destination</Link>
                     </li>
                     <li>
-                        <Link to="#">Contact</Link>
+                        <Link to={'/goto/'}>GoTo</Link>
                     </li>
                     <li>
                         <Link to={'/createAccount'}> New Account</Link>
                     </li>
                     <li>
-                        <Link to={'/login'}>{!loginUser ? loginUser?.displayName : <p>Login</p> }</Link>
+                        <Link to={'/login'}>Login</Link>
+                        
+                        {/* {loginUser ? loginUser?.displayName : <p>Login</p> } */}
                     </li>
                 </ul>
             </nav>

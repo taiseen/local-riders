@@ -15,12 +15,8 @@ import Destination from './Components/Destination/Destination';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import CreateAccount from './Components/LoginSystem/CreateAccount/CreateAccount';
 import LoginPage from './Components/LoginSystem/LoginPage/LoginPage';
+import GoTo from './Components/GoTo/GoTo';
 
-
-
-// 11-March-2021
-// after finish ==>> attach output-ui
-// Last focus on README file...
 
 export const UserContext = createContext();
 
@@ -28,7 +24,6 @@ const App = () => {
 
     const [loginUser, setLoginUser] = useState({});
 
-    // PrivateRoute
     return (
 
         <UserContext.Provider value={[loginUser, setLoginUser]}>
@@ -44,6 +39,10 @@ const App = () => {
 
                     <PrivateRoute path="/destination/:vehicleType">
                         <Destination/>
+                    </PrivateRoute>
+
+                    <PrivateRoute path="/goto/">
+                        <GoTo/>
                     </PrivateRoute>
 
                     <Route path="/createAccount">
