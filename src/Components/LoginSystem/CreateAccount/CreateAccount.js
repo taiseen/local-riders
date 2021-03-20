@@ -20,51 +20,20 @@ const CreateAccount = () => {
 
     // user info send to Google Firebase...
     const onSubmit = (userData) => {
-        //event.preventDefault();
 
-        if( userData.password === userData.rePassword){
+
+        if (userData.password === userData.rePassword) {
             console.log(userData);
-            //userData.name
-            createUserWithEmailAndPassword( userData.email, userData.password)
-            .then(res => {
 
-                setLoginUser(res);
-            })
+            createUserWithEmailAndPassword(userData.email, userData.password)
+                .then(res => {
 
-        }else{
+                    setLoginUser(res);
+                })
+
+        } else {
             console.log(`password don't match`);
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         console.log('newAccountCreate.........................');
     }
@@ -86,45 +55,43 @@ const CreateAccount = () => {
 
     }
 
-
-
     // FaceBook =========================================
     const handleFacebookLogin = () => {
         console.log('fb === Create Account Page');
         faceBookLogin()
-        .then(res => {
-            // pass to context api for global access
-            setLoginUser(res);
-            // history.replace(from);
-            console.log("FB => ", loginUser);
-        })
+            .then(res => {
+                // pass to context api for global access
+                setLoginUser(res);
+                // history.replace(from);
+                console.log("FB => ", loginUser);
+            })
     }
 
     // Google ===========================================
     const handleGoogleLogin = () => {
         console.log('google === Create Account Page');
         googleLogin()
-        .then(res => {
-            // pass to context api for global access
-            setLoginUser(res);
-            // history.replace(from);
-            console.log("Google => ", loginUser);
-        })
-        
+            .then(res => {
+                // pass to context api for global access
+                setLoginUser(res);
+                // history.replace(from);
+                console.log("Google => ", loginUser);
+            })
+
     }
 
     // GitHub ===========================================
     const handleGitHubLogin = () => {
         console.log('git === Create Account Page');
         gitHubLogin()
-        .then(res => {
-            // pass to context api for global access
-            setLoginUser(res);
-            // history.replace(from);
-            console.log("Git => ", loginUser);
-        })
+            .then(res => {
+                // pass to context api for global access
+                setLoginUser(res);
+                // history.replace(from);
+                console.log("Git => ", loginUser);
+            })
     }
-    
+
     return (
 
         <div className="loginPage">
@@ -134,16 +101,17 @@ const CreateAccount = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
 
                     <input type="text" name="name" placeholder="Name" ref={register({ required: true })} />
-                    {errors.name && <span className="error">Name is required</span>}
 
-                    <input type="text" name="email" placeholder="Username of Email" ref={register({ required: true ,  pattern:/\S+@\S+.\S+/ })} />
-                    {errors.email && <span className="error">Email is required</span>}
+                    {errors.name && <span className="error e1">Name is required</span>}
 
-                    <input type="password" name="password" placeholder="Password" ref={register({ required: true , minLength: 6})} />
-                    {errors.password && <span className="error">Password is required</span>}
+                    <input type="text" name="email" placeholder="Username of Email" ref={register({ required: true, pattern: /\S+@\S+.\S+/ })} />
+                    {errors.email && <span className="error e2">Email is required</span>}
 
-                    <input type="password" name="rePassword" placeholder="Conform Password" ref={register({ required: true , minLength: 6 })} />
-                    {errors.rePassword && <span className="error">Password is required</span>}
+                    <input type="password" name="password" placeholder="Password" ref={register({ required: true, minLength: 6 })} />
+                    {errors.password && <span className="error e3">Password is required</span>}
+
+                    <input type="password" name="rePassword" placeholder="Conform Password" ref={register({ required: true, minLength: 6 })} />
+                    {errors.rePassword && <span className="error e4">Password is required</span>}
 
                     <input type="submit" value="Create an account" />
                 </form>
@@ -151,6 +119,12 @@ const CreateAccount = () => {
                     Already have an account?
                 <Link to={'/login'}>Login </Link>
                 </p>
+                {/* {
+                    !loginUser.displayName
+                        ? <p className="success">Account Create Successfully</p>
+                        : <p className="error">All ready have account with this email</p>
+                } */}
+
             </div>
 
 

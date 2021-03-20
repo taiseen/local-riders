@@ -6,11 +6,16 @@ import '../CreateAccount/CreateAccount.css'
 import facebook from '../../../img/facebook.png'
 import google from '../../../img/google.png'
 import github from '../../../img/github.png'
-import { faceBookLogin, gitHubLogin, googleLogin, initLoginFrameWork , logInWithEmailAndPassword } from '../FireBaseLogin/FireBaseLoginManager';
-import { Link } from 'react-router-dom';
+import { faceBookLogin, gitHubLogin, googleLogin, initLoginFrameWork, logInWithEmailAndPassword } from '../FireBaseLogin/FireBaseLoginManager';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 
 
 const LoginPage = () => {
+
+    // private routing purpose......
+    const history = useHistory();
+    const location = useLocation();
+    const { from } = location.state || { from: { pathname: "/" } };
 
     const [loginUser, setLoginUser] = useContext(UserContext);
 
@@ -43,7 +48,7 @@ const LoginPage = () => {
         }
 
         if (isFormValid) {
-            let updateUserInfo = {... user};
+            let updateUserInfo = { ...user };
             updateUserInfo[event.target.name] = event.target.value;
 
             // Locally store 
@@ -51,7 +56,7 @@ const LoginPage = () => {
 
             // Globally store | Context API
             //setLoginUser(updateUserInfo)
-        } 
+        }
 
     }
 
@@ -63,15 +68,17 @@ const LoginPage = () => {
         event.preventDefault();
 
         if (user.email && user.password) {
-            logInWithEmailAndPassword(user.email , user.password )
-            .then(res => {
-                setUser(res);
-                setLoginUser(res);
-            })
+            logInWithEmailAndPassword(user.email, user.password)
+                .then(res => {
+                    setUser(res);
+                    setLoginUser(res);
+                    // private routing purpose......
+                    history.replace(from)
+                })
         }
 
-        console.log("Local ==> ",user);
-        console.log("Context API ==> ",loginUser);
+        console.log("Local ==> ", user);
+        console.log("Context API ==> ", loginUser);
         console.log('loginFunction OK');
     }
 

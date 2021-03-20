@@ -42,9 +42,9 @@ const App = () => {
                         <Home />
                     </Route>
 
-                    <Route path="/destination/:vehicleType">
+                    <PrivateRoute path="/destination/:vehicleType">
                         <Destination/>
-                    </Route>
+                    </PrivateRoute>
 
                     <Route path="/createAccount">
                         <CreateAccount/>

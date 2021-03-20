@@ -28,13 +28,13 @@
 .login_area p {
     text-align: center;
     margin-top: 0;
-    
-    font-size : 22px;
+
+    font-size: 22px;
 }
 
 .singUp_area a,
 .login_area a {
-    color: #FE6E43;
+    color      : #FE6E43;
     margin-left: 10px;
 }
 
@@ -43,6 +43,8 @@ form {
     flex-flow      : column wrap;
     justify-content: space-around;
     padding        : 20px;
+
+    position: relative;
 }
 
 form label {
@@ -121,6 +123,27 @@ input[type=submit] {
 }
 
 .error {
-    color: red;
+    color   : red;
+    position: absolute;
+    right   : 20px;
+}
 
+.e1 {
+    top: 40px
+}
+
+.e2 {
+    top: 125px
+}
+
+.e3 {
+    top: 205px;
+}
+
+.e4 {
+    top: 290px;
+}
+
+.success {
+    color: green;
 }

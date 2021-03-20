@@ -10,6 +10,9 @@ export const initLoginFrameWork = () => {
     }
 }
 
+/* Yor given data send it form here to Google...
+   this is actual data flow pipeline */
+
 // Create New User ##########################################
 export const createUserWithEmailAndPassword = (email, password) => {
     return firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -17,7 +20,7 @@ export const createUserWithEmailAndPassword = (email, password) => {
             const newUserInfo = res.user;
             newUserInfo.userSuccess = true;
             newUserInfo.userError = '';
-            console.log('success full - create');
+            console.log('successfully - account create | From FireBaseManager');
             return newUserInfo;
         })
         .catch(error => {
@@ -37,7 +40,7 @@ export const logInWithEmailAndPassword = (email, password) => {
             const userInfo = res.user;
             userInfo.userSuccess = true;
             userInfo.userError = '';
-            console.log('success full - sign in');
+            console.log('successfully - Login | From FireBaseManager');
             return userInfo;
         })
         .catch(error => {
@@ -58,6 +61,7 @@ export const googleLogin = () => {
         .then(result => {
             // The signed-in user info.
             var user = result.user;
+            console.log('Google | From FireBaseManager');
             return user;
         }).catch((error) => {
             // Handle Errors here.
@@ -78,6 +82,7 @@ export const faceBookLogin = () => {
         .then(result => {
             // The signed-in user info.
             var user = result.user;
+            console.log('FaceBook | From FireBaseManager');
             return user;
         })
         .catch((error) => {
@@ -99,6 +104,7 @@ export const gitHubLogin = () => {
         .then(result => {
             // The signed-in user info.
             var user = result.user;
+            console.log('GitHub | From FireBaseManager');
             return user;
         }).catch((error) => {
             // Handle Errors here.
