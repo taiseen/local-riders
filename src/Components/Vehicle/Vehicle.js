@@ -8,10 +8,12 @@ const Vehicle = (props) => {
 
     return (
         <Link to={`/destination/${id}`}>
+            
             <div className="vehicle_box">
                 <img src={imgUrl} alt="" />
                 <h2>{name}</h2>
             </div>
+            
         </Link>
     );
 };

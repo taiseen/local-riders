@@ -1,0 +1,126 @@
+.loginPage {
+    display       : flex;
+    flex-direction: column;
+    padding       : 0;
+}
+
+.singUp_area,
+.login_area {
+    margin         : 0 auto 30px;
+    width          : 550px;
+    height         : 520px;
+    border         : 1px solid black;
+    padding        : 10px;
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+}
+
+.singUp_area h3,
+.login_area h3 {
+    margin       : 0;
+    margin-bottom: 10px;
+    margin-left  : 25px;
+    font-size    : 40px;
+}
+
+.singUp_area p,
+.login_area p {
+    text-align: center;
+    margin-top: 0;
+    
+    font-size : 22px;
+}
+
+.singUp_area a,
+.login_area a {
+    color: #FE6E43;
+    margin-left: 10px;
+}
+
+form {
+    display        : flex;
+    flex-flow      : column wrap;
+    justify-content: space-around;
+    padding        : 20px;
+}
+
+form label {
+    font-size: 18px;
+    float    : left;
+}
+
+form label input {
+    margin-right: 10px;
+}
+
+form a {
+    font-size: 18px;
+    float    : right;
+}
+
+input {
+    padding      : 8px;
+    margin-top   : 0;
+    margin-bottom: 30px;
+    font-size    : 25px;
+}
+
+input:focus {
+    outline: none;
+}
+
+input[type=text],
+input[type=password] {
+    border       : 0;
+    border-bottom: 1px solid black;
+}
+
+input[type=submit] {
+    background-color: #FE6E43;
+    color           : white;
+    margin-bottom   : 0;
+}
+
+
+.auth_area {
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+    width         : 500px;
+    margin        : auto;
+    padding       : 10px;
+    margin-bottom : 50px;
+}
+
+
+.box {
+    display      : flex;
+    align-items  : center;
+    border       : 1px solid black;
+    width        : 400px;
+    border-radius: 30px;
+    margin-bottom: 10px;
+}
+
+.box:hover {
+    cursor: pointer;
+}
+
+.box img {
+    width  : 50px;
+    height : 30px;
+    padding: 0 10px;
+}
+
+.box p {
+    flex-grow : 1;
+    text-align: center;
+    margin    : 10px;
+    font-size : 20px;
+}
+
+.error {
+    color: red;
+
+}

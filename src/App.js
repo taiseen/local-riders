@@ -14,6 +14,9 @@ import Destination from './Components/Destination/Destination';
 import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './Components/FireBase/FireBaseConfig';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import CreateAccount from './Components/LoginSystem/CreateAccount/CreateAccount';
+import LoginPage from './Components/LoginSystem/LoginPage/LoginPage';
 
 
 
@@ -34,6 +37,7 @@ const App = () => {
 
     const [loginUser, setLoginUser] = useState({});
 
+    // PrivateRoute
     return (
 
         <UserContext.Provider value={[loginUser, setLoginUser]}>
@@ -49,6 +53,10 @@ const App = () => {
 
                     <Route path="/destination/:vehicleType">
                         <Destination/>
+                    </Route>
+
+                    <Route path="/login">
+                        <LoginPage/>
                     </Route>
 
                     <Route exact path="/">

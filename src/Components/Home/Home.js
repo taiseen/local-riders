@@ -16,11 +16,11 @@ const Home = () => {
 
 
     return (
-        <main>
+        <div className="vehicles_container">
             {
                 vehicles.map(vehicle => <Vehicle info={vehicle} key={vehicle.id} />)
             }
-        </main>
+        </div>
     );
 };
 

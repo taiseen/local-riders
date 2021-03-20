@@ -1,9 +1,14 @@
-main {
+body {
+    background-image: none;
+}
+
+.destinationPage {
     display        : flex;
     flex-wrap      : wrap;
     justify-content: space-evenly;
     width          : 70%;
-    margin         : auto;
+    margin         : 0 auto;
+    padding        : 0;
 
 }
 
@@ -24,11 +29,10 @@ label {
     font-weight: 700;
 }
 
-input[type=text] {
+.input_area {
     padding      : 7px;
     margin-bottom: 20px;
     font-size    : 22px;
-    border-radius: px;
 }
 
 .map_area img {
