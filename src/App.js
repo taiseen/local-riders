@@ -41,7 +41,7 @@ const App = () => {
                         <Destination/>
                     </PrivateRoute>
 
-                    <PrivateRoute path="/goto/">
+                    <PrivateRoute path="/goto/:vehicleID">
                         <GoTo/>
                     </PrivateRoute>
 

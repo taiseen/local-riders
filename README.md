@@ -1,8 +1,9 @@
 # React App <|> [Live Link](https://local-riders-bd.web.app) 
 
 ## Topic of Focus:
-- OAuth Login System
-- User Manually SignUp & SignIn
+- OAuth Login System.
+- User Manually SignUp & SignIn.
+- GoTo Page Dynamic.
 
 ## Technologies :
 Project is created with:
@@ -14,5 +15,5 @@ Project is created with:
 
 ## Missing :
 * Map
-* Responsive
-* 
+* Poor Responsive
+* OAuth Login Problem But Some time its work

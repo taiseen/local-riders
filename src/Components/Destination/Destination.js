@@ -17,7 +17,7 @@ const Destination = () => {
     const { vehicleType } = useParams();
     const vehicle = vehicleData.find(v => v.id == vehicleType);
 
-    console.log(vehicle);
+    //console.log(vehicle);
 
     const handleUserInput = (event) => {
         const { name, value } = event.target;
@@ -31,7 +31,7 @@ const Destination = () => {
             setLocation(location)
         }
         setLocation(location)
-        console.log(location);
+        //console.log(location);
 
     }
 
@@ -46,7 +46,7 @@ const Destination = () => {
                 <label for="">Pickup To</label>
                 <input type="text" className="input_area" onBlur={handleUserInput} name="destination" placeholder="Destination" required />
 
-                <Link to={'/goto'}>
+                <Link to={`/goto/${vehicle.id}`}>
                     <button>Search</button>
                 </Link>
             </div>
