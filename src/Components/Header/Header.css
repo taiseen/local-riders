@@ -25,3 +25,36 @@ header li a:hover {
     border-radius   : 5px;
     text-decoration : none;
 }
+/* 
+.container {
+    background-color: coral;
+    display         : flex;
+    justify-content : space-between;
+    border          : 1px solid black;
+}
+
+.logo a {
+    color      : black;
+    font-size  : 35px;
+    font-weight: 800;
+    font-family: Cambria;
+}
+
+.logo a:hover {
+    text-decoration: none;
+}
+
+.navbar-nav {
+    background: brown;
+}
+
+.navbar-nav a {
+    color: black;
+} */
+/* 
+.navbar-nav a:hover {
+    color           : white;
+    background-color: #FF6E41;
+    border-radius   : 5px;
+    text-decoration : none;
+} */

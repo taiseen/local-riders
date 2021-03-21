@@ -1,19 +1,22 @@
 # React App <|> [Live Link](https://local-riders-bd.web.app) 
 
 ## Topic of Focus:
-- OAuth Login System.
 - User Manually SignUp & SignIn.
+- OAuth Login System.
 - GoTo Page Dynamic.
+- Login Route 
+- Map
+
 
 ## Technologies :
 Project is created with:
 * HTML5 
 * CSS3
 * React 
-* FireBase
 * GitHub
+* FireBase
 
 ## Missing :
-* Map
 * Poor Responsive
-* OAuth Login Problem But Some time its work
+* Logout 
+
