@@ -165,17 +165,18 @@ const LoginPage = () => {
                             <input type="checkbox" name="" id="" />
                                         Remember Me
                         </label>
-                        <a href="">Forget Password?</a>
+                        <a href="#">Forget Password?</a>
                         
                     </div>
                     
-                    {/* {
-                        user.isLogin
-                            ? 
-                            :  <input type="submit" value="LogOut" onClick={userLogOut} />
-                    } */}
 
-                        <input type="submit" value="Login" />
+                    {
+                        user.isLogin
+                            ? <input type="submit" value="LogOut" onClick={userLogOut} />  
+                            : <input type="submit" value="Login" />
+                    }
+
+                        
                 </form>
                 <p>
                     Don't have an account?
