@@ -6,13 +6,14 @@ import car from '../../img/car.png'
 import mapStaticImage from '../../img/map.png'
 import { useParams } from 'react-router';
 import vehicleData from '../DB/vehicleData.json'
+import Map from '../GoogleMap/Map'
 
 const GoTo = () => {
 
     const { vehicleID } = useParams();
     const vehicle = vehicleData.find(v => v.id == vehicleID);
 
-    const { name , imgUrl , capacity , price } = vehicle ;
+    const { name, imgUrl, capacity, price } = vehicle;
     return (
         <div className="main_area">
 
@@ -30,7 +31,7 @@ const GoTo = () => {
                     <h3>{capacity}</h3>
                     <h3>${price}</h3>
                 </div>
-   
+
                 <div className="result_box">
                     <img className="vehicle" src={imgUrl} alt="" />
                     <h3>{name}</h3>
@@ -38,7 +39,7 @@ const GoTo = () => {
                     <h3>{capacity}</h3>
                     <h3>${price}</h3>
                 </div>
-   
+
                 <div className="result_box">
                     <img className="vehicle" src={imgUrl} alt="" />
                     <h3>{name}</h3>
@@ -46,7 +47,7 @@ const GoTo = () => {
                     <h3>{capacity}</h3>
                     <h3>${price}</h3>
                 </div>
-   
+
                 <div className="result_box">
                     <img className="vehicle" src={imgUrl} alt="" />
                     <h3>{name}</h3>
@@ -54,11 +55,15 @@ const GoTo = () => {
                     <h3>{capacity}</h3>
                     <h3>${price}</h3>
                 </div>
-   
+
             </section>
 
             <div class="map_area">
-                <img src={mapStaticImage} alt="" />
+                {/* Image Of Map */}
+                {/* <img src={mapStaticImage} alt="" /> */}
+
+                {/* Dynamic Google Map */}
+                <Map></Map>
             </div>
 
         </div>
