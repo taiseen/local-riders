@@ -4,6 +4,24 @@
     padding       : 0;
 }
 
+.loginPage span,
+.login_area span {
+    color : tomato;
+    cursor: pointer;
+}
+
+.logOutBtnDiv {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+}
+
+.logOutBtnDiv input {
+    border-radius: 6px;
+    border       : 0;
+    padding      : 10px 25px;
+}
+
 .singUp_area,
 .login_area {
     margin         : 0 auto 30px;
@@ -36,6 +54,13 @@
 .login_area a {
     color      : #FE6E43;
     margin-left: 10px;
+}
+
+
+.loginPage .logBtn,
+.login_area .logBtn {
+    border       : 0;
+    border-radius: 6px;
 }
 
 form {
@@ -72,8 +97,7 @@ input:focus {
     outline: none;
 }
 
-input[type=text],
-input[type=password] {
+.loginInputField {
     border       : 0;
     border-bottom: 1px solid black;
 }

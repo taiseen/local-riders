@@ -20,7 +20,10 @@ export const createUserWithEmailAndPassword = (email, password) => {
             const newUserInfo = res.user;
             newUserInfo.userSuccess = true;
             newUserInfo.userError = '';
-            console.log('successfully - account create | From FireBaseManager');
+            //console.log('successfully - account create | From FireBaseManager');
+            if (res.email !== '') {
+                alert('Your account has been successfully created.');
+            }
             return newUserInfo;
         })
         .catch(error => {
@@ -28,7 +31,11 @@ export const createUserWithEmailAndPassword = (email, password) => {
             const newUserInfo = {};
             newUserInfo.userSuccess = false;
             newUserInfo.userError = error.message;
+            if (newUserInfo.userError) {
+                alert(newUserInfo.userError);
+            }
             return newUserInfo;
+
         });
 }
 
@@ -52,16 +59,14 @@ export const logInWithEmailAndPassword = (email, password) => {
         });
 }
 
-
-// For Google ##############################################
-export const googleLogin = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
+// For All loginProviderWebsite ##############################################
+export const loginProviderWebsite = (provider) => {
     return firebase.auth()
         .signInWithPopup(provider)
         .then(result => {
             // The signed-in user info.
             var user = result.user;
-            console.log('Google | From FireBaseManager');
+            console.log('ALL Login | From FireBaseManager');
             return user;
         }).catch((error) => {
             // Handle Errors here.
@@ -70,59 +75,4 @@ export const googleLogin = () => {
             console.log(errorCode);
             console.log(errorMessage);
         });
-}
-
-
-// For Facebook ##############################################
-export const faceBookLogin = () => {
-    const provider = new firebase.auth.FacebookAuthProvider();
-    return firebase
-        .auth()
-        .signInWithPopup(provider)
-        .then(result => {
-            // The signed-in user info.
-            var user = result.user;
-            console.log('FaceBook | From FireBaseManager');
-            return user;
-        })
-        .catch((error) => {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            console.log(errorCode);
-            console.log(errorMessage);
-        });
-}
-
-
-// For GitHub ##############################################
-export const gitHubLogin = () => {
-    const provider = new firebase.auth.GithubAuthProvider();
-    return firebase
-        .auth()
-        .signInWithPopup(provider)
-        .then(result => {
-            // The signed-in user info.
-            var user = result.user;
-            console.log('GitHub | From FireBaseManager');
-            return user;
-        }).catch((error) => {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            console.log(errorCode);
-            console.log(errorMessage);
-        });
-}
-
-
-export const logOut = () => {
-    return firebase.auth().signOut()
-    .then(result => {
-        const user = result.user;
-        return user ;
-        
-    }).catch(error => {
-        console.log(error);
-    });
 }

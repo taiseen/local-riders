@@ -12,7 +12,7 @@ const location = {
 };
 
 const onLoad = marker => {
-  console.log('marker: ', marker)
+  //console.log('marker: ', marker)
 }
 
 function Map() {

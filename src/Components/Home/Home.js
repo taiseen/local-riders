@@ -1,21 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import './Home.css'
-import vehicleData from '../DB/vehicleData.json'
+import React, { useContext } from 'react';
+import { VehicleContext } from '../ContextAPI/VehicleContext';
 import Vehicle from '../Vehicle/Vehicle';
+import './Home.css'
 
 const Home = () => {
 
-    const [vehicles, setVehicles] = useState([])
-
-    useEffect(() => {
-        setVehicles(vehicleData);
-    }, [])
-
+    const { allVehicles } = useContext(VehicleContext);
 
     return (
         <div className="vehicles_container">
             {
-                vehicles.map(vehicle => <Vehicle info={vehicle} key={vehicle.id} />)
+                allVehicles.map(vehicle => <Vehicle info={vehicle} key={vehicle.id} />)
             }
         </div>
     );

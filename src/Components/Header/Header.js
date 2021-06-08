@@ -1,12 +1,10 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { UserContext } from '../../App';
+import { UserLoginContext } from '../ContextAPI/UserLoginContext';
 import './Header.css'
 
 const Header = () => {
-    const [loginUser, setLoginUser] = useContext(UserContext);
-    
-    console.log('Header File ############################# ',loginUser);
+    const { loginUser } = useContext(UserLoginContext);
 
     return (
         <header>
@@ -23,10 +21,9 @@ const Header = () => {
                         <Link to={'/goto/'}>GoTo</Link>
                     </li>
                     <li>
-                        <Link to={'/createAccount'}> New Account</Link>
-                    </li>
-                    <li>
-                        <Link to={'/login'}>{loginUser ? loginUser?.displayName || 'Login': 'Login' }</Link>
+                        <Link to={'/loginAccount'}>
+                            {loginUser ? loginUser.email || loginUser.displayName || 'User' : 'Login'}
+                        </Link>
                     </li>
                 </ul>
             </nav>

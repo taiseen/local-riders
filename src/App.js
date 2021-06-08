@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
     BrowserRouter as Router,
@@ -10,59 +10,52 @@ import Home from './Components/Home/Home';
 import Header from './Components/Header/Header';
 import PageNotFound from './Components/PageNotFound/PageNotFound';
 import Destination from './Components/Destination/Destination';
-
-
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
-import CreateAccount from './Components/LoginSystem/CreateAccount/CreateAccount';
-import LoginPage from './Components/LoginSystem/LoginPage/LoginPage';
+import LoginAccount from './Components/LoginSystem/LoginAccount/LoginAccount';
 import GoTo from './Components/GoTo/GoTo';
-
+import VehicleContextProvider from './Components/ContextAPI/VehicleContext';
+import UserLoginContextProvider from './Components/ContextAPI/UserLoginContext';
 
 export const UserContext = createContext();
 
 const App = () => {
 
-    const [loginUser, setLoginUser] = useState({});
-
     return (
+        <VehicleContextProvider>
+            <UserLoginContextProvider>
 
-        <UserContext.Provider value={[loginUser, setLoginUser]}>
+                <Router>
 
-            <Router>
+                    <Header />
 
-                <Header />
+                    <Switch>
+                        <Route path="/home">
+                            <Home />
+                        </Route>
 
-                <Switch>
-                    <Route path="/home">
-                        <Home />
-                    </Route>
+                        <PrivateRoute path="/destination/:vehicleID">
+                            <Destination />
+                        </PrivateRoute>
 
-                    <PrivateRoute path="/destination/:vehicleType">
-                        <Destination/>
-                    </PrivateRoute>
+                        <PrivateRoute path="/goto/:vehicleID">
+                            <GoTo />
+                        </PrivateRoute>
 
-                    <PrivateRoute path="/goto/:vehicleID">
-                        <GoTo/>
-                    </PrivateRoute>
+                        <Route path="/loginAccount">
+                            <LoginAccount />
+                        </Route>
 
-                    <Route path="/createAccount">
-                        <CreateAccount/>
-                    </Route>
+                        <Route exact path="/">
+                            <Home />
+                        </Route>
 
-                    <Route path="/login">
-                        <LoginPage/>
-                    </Route>
-
-                    <Route exact path="/">
-                        <Home />
-                    </Route>
-
-                    <Route path="/*">
-                        <PageNotFound />
-                    </Route>
-                </Switch>
-            </Router>
-        </UserContext.Provider>
+                        <Route path="/*">
+                            <PageNotFound />
+                        </Route>
+                    </Switch>
+                </Router>
+            </UserLoginContextProvider>
+        </VehicleContextProvider>
     );
 };
 

@@ -1,17 +1,14 @@
 import React from 'react';
-import './GoTo.css'
-
 import people from '../../img/people.png'
-import car from '../../img/car.png'
-import mapStaticImage from '../../img/map.png'
 import { useParams } from 'react-router';
 import vehicleData from '../DB/vehicleData.json'
 import Map from '../GoogleMap/Map'
+import './GoTo.css'
 
 const GoTo = () => {
 
     const { vehicleID } = useParams();
-    const vehicle = vehicleData.find(v => v.id == vehicleID);
+    const vehicle = vehicleData.find(v => v.id === parseInt(vehicleID));
 
     const { name, imgUrl, capacity, price } = vehicle;
     return (
@@ -59,9 +56,6 @@ const GoTo = () => {
             </section>
 
             <div class="map_area">
-                {/* Image Of Map */}
-                {/* <img src={mapStaticImage} alt="" /> */}
-
                 {/* Dynamic Google Map */}
                 <Map></Map>
             </div>

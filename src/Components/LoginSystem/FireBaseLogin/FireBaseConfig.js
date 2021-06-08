@@ -5,6 +5,6 @@ const FireBaseConfig = {
   storageBucket: "local-riders-bd.appspot.com",
   messagingSenderId: "49885100003",
   appId: "1:49885100003:web:76d76d92cd9c7c7e0852d6"
-  };
-  
-  export default FireBaseConfig ;
+};
+
+export default FireBaseConfig;
