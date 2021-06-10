@@ -1,9 +1,8 @@
-import React from 'react';
-import people from '../../img/people.png'
+import people from '../img/people.png'
 import { useParams } from 'react-router';
-import vehicleData from '../DB/vehicleData.json'
-import Map from '../GoogleMap/Map'
-import './GoTo.css'
+import vehicleData from './vehicleData.json'
+import Map from './Map'
+
 
 const GoTo = () => {
 

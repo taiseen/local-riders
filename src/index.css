@@ -1,17 +1,240 @@
-* {
-  margin    : 0;
-  padding   : 0;
-  box-sizing: border-box;
+/* Home Component CSS | Start  */
+body {
+    /* background-image: url('../../img/bg.png'); */
+    background-image: none;
 }
 
-body {
-  font-family     : Calibri;
-  background-image: url('./img/bg.png');
+.vehicles_container {
+    margin         : 200px auto;
+    display        : flex;
+    flex-wrap      : wrap;
+    justify-content: space-evenly;
+    align-items    : center;
+}
 
-  height             : 100%;
-  
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat  : no-repeat;
-  background-size    : cover;
+main a:hover {
+    text-decoration: none;
+}
+
+/* ############################################# */
+/* ############################################# */
+/* ############################################# */
+/* Header Component CSS | Start  */
+.menu-bar {
+    margin         : 20px auto;
+    height         : 80px;
+    display        : flex;
+    justify-content: space-around;
+    align-items    : center;
+}
+
+.menu-bar nav ul {
+    list-style: none;
+    display   : flex;
+}
+
+.menu-bar nav ul li a {
+    display     : block;
+    margin-right: 20px;
+    padding     : 10px;
+    font-size   : 24px;
+    color       : black;
+}
+
+.menu-bar nav ul li a:hover {
+    color           : white;
+    background-color: #FF6E41;
+    border-radius   : 5px;
+    text-decoration : none;
+}
+
+
+/* ############################################# */
+/* ############################################# */
+/* ############################################# */
+/* Destination Component CSS | Start  */
+
+.destinationPage {
+    display        : flex;
+    flex-wrap      : wrap;
+    justify-content: space-evenly;
+    width          : 70%;
+    margin         : 0 auto;
+    padding        : 0;
+
+}
+
+.user_input_area {
+    display       : flex;
+    flex-direction: column;
+    background    : #d9d9d9;
+    align-self    : flex-start;
+    width         : 400px;
+    height        : 300px;
+    padding       : 15px 20px;
+    border-radius : 10px;
+    margin-bottom : 20px;
+    margin-top    : 10px;
+    width         : 320px;
+}
+
+label {
+    font-size  : 22px;
+    font-weight: 700;
+}
+
+.input_area {
+    padding      : 7px;
+    margin-bottom: 20px;
+    font-size    : 22px;
+    border-radius: 2px;
+    border       : 0;
+}
+
+.map_area img {
+    width: 95%;
+}
+
+.searchBtn {
+    background-color: #FF6E41;
+    width           : 100%;
+    height          : 50px;
+    font-size       : 22px;
+    color           : white;
+    border-radius   : 5px;
+    border          : 0;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+
+/* ############################################# */
+/* ############################################# */
+/* ############################################# */
+/* GoTo Component CSS | Start  */
+.main_area {
+    display        : flex;
+    justify-content: center;
+    flex-wrap      : wrap;
+}
+
+.map_area img {
+    width : 95%;
+    margin: 10px 0;
+}
+
+/*----------------------- Location Direction ----------------------- */
+
+section.location-section {
+    background   : #d9d9d9;
+    width        : 400px;
+    height       : 550px;
+    border-radius: 10px;
+    padding      : 20px;
+    margin       : 10px 5px;
+}
+
+.direction {
+    background   : orangered;
+    border-radius: 10px;
+    padding      : 20px;
+    position     : relative;
+}
+
+.direction p {
+    color       : white;
+    font-size   : 18px;
+    margin      : 0;
+    padding-left: 20px;
+    position    : relative;
+}
+
+p.dir-from {
+    margin-bottom: 20px;
+}
+
+span.hr-bar {
+    position  : absolute;
+    z-index   : 1;
+    left      : 22px;
+    top       : 35px;
+    width     : 2px;
+    height    : 45px;
+    display   : block;
+    background: #ffffff;
+}
+
+.direction p:before {
+    content         : "";
+    position        : absolute;
+    left            : -5px;
+    top             : 6px;
+    width           : 15px;
+    height          : 15px;
+    border-radius   : 50%;
+    background-color: white;
+}
+
+/* =========== result Box =============*/
+.result_box {
+    margin-top      : 15px;
+    width           : 360px;
+    height          : 80px;
+    border-radius   : 10px;
+    background-color: white;
+    display         : flex;
+    justify-content : space-between;
+    align-items     : center;
+    padding         : 2px 15px;
+}
+
+.vehicle {
+    width : 60px;
+    height: 50px;
+}
+
+.people {
+    width : 40px;
+    height: 40px;
+}
+
+
+
+/* ############################################# */
+/* ############################################# */
+/* ############################################# */
+/* Vehicle Component CSS | Start  */
+.vehicle_box {
+    width        : 300px;
+    height       : 300px;
+    padding      : 15px;
+    background   : whitesmoke;
+    border-radius: 5px;
+    text-align   : center;
+    margin-bottom: 20px;
+    margin-right : 10px;
+    position     : relative;
+}
+
+.vehicle_box:hover {
+    cursor    : pointer;
+    background: white;
+}
+
+.vehicle_box img {
+    margin-bottom: 10px;
+    width        : 100%;
+    margin-bottom: 20px;
+}
+
+
+.vehicle_box h2 {
+
+    color    : black;
+    position : absolute;
+    bottom   : 0;
+    left     : 50%;
+    transform: translateX(-50%);
 }

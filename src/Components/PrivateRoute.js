@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Redirect, Route } from 'react-router';
-import { UserLoginContext } from '../ContextAPI/UserLoginContext';
+import { UserLoginContext } from './ContextAPI/UserLoginContext';
 
 const PrivateRoute = ({ children, ...rest }) => {
 

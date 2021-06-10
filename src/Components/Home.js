@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
-import { VehicleContext } from '../ContextAPI/VehicleContext';
-import Vehicle from '../Vehicle/Vehicle';
-import './Home.css'
+import { VehicleContext } from './ContextAPI/VehicleContext';
+import Vehicle from './Vehicle';
 
 const Home = () => {
 

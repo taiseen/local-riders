@@ -1,14 +1,16 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { UserLoginContext } from '../ContextAPI/UserLoginContext';
-import './Header.css'
+import { UserLoginContext } from './ContextAPI/UserLoginContext';
 
 const Header = () => {
+    
     const { loginUser } = useContext(UserLoginContext);
 
     return (
-        <header>
+        <header className="menu-bar">
+            
             <h1>Local Riders</h1>
+            
             <nav>
                 <ul>
                     <li>
@@ -27,6 +29,7 @@ const Header = () => {
                     </li>
                 </ul>
             </nav>
+        
         </header>
     );
 };

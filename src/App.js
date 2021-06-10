@@ -6,13 +6,13 @@ import {
     Route
 } from "react-router-dom";
 
-import Home from './Components/Home/Home';
-import Header from './Components/Header/Header';
-import PageNotFound from './Components/PageNotFound/PageNotFound';
-import Destination from './Components/Destination/Destination';
-import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import GoTo from './Components/GoTo';
+import Home from './Components/Home';
+import Header from './Components/Header';
+import Destination from './Components/Destination';
+import PrivateRoute from './Components/PrivateRoute';
+import PageNotFound from './Components/PageNotFound';
 import LoginAccount from './Components/LoginSystem/LoginAccount/LoginAccount';
-import GoTo from './Components/GoTo/GoTo';
 import VehicleContextProvider from './Components/ContextAPI/VehicleContext';
 import UserLoginContextProvider from './Components/ContextAPI/UserLoginContext';
 

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import vehicleData from '../DB/vehicleData.json'
-import Map from '../GoogleMap/Map'
+import vehicleData from './vehicleData.json'
+import Map from './Map'
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
-import './Destination.css'
+
 
 const Destination = () => {
 

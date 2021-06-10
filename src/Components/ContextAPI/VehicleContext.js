@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import vehicleData from '../DB/vehicleData.json';
+import vehicleData from '../vehicleData.json';
 
 export const VehicleContext = createContext();
 
