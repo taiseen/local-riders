@@ -23,35 +23,21 @@ const App = () => {
     return (
         <VehicleContextProvider>
             <UserLoginContextProvider>
-
                 <Router>
-
                     <Header />
-
                     <Switch>
-                        <Route path="/home">
-                            <Home />
-                        </Route>
+                        <Route path="/home" component={Home} />
+                        <Route path="/loginAccount" component={LoginAccount} />
+                        <Route path="/" component={Home} exact />
 
                         <PrivateRoute path="/destination/:vehicleID">
                             <Destination />
                         </PrivateRoute>
-
                         <PrivateRoute path="/goto/:vehicleID">
                             <GoTo />
                         </PrivateRoute>
 
-                        <Route path="/loginAccount">
-                            <LoginAccount />
-                        </Route>
-
-                        <Route exact path="/">
-                            <Home />
-                        </Route>
-
-                        <Route path="/*">
-                            <PageNotFound />
-                        </Route>
+                        <Route path="*" component={PageNotFound} />
                     </Switch>
                 </Router>
             </UserLoginContextProvider>
